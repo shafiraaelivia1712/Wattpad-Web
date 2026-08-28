@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories - Seraphina Author</title>
+    <!-- Menghubungkan ke file CSS -->
+    <link rel="stylesheet" href="stories.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR / HEADER ATAS ================= -->
+    <header class="navbar">
+        <div class="header-left">
+            <!-- Tombol Garis Tiga (Hamburger Menu) -->
+            <button class="menu-btn" id="open-menu" aria-label="Buka Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Logo Website -->
+            <a href="index.html" class="logo">
+                <span class="logo-pink">SERAPHINA</span>
+                <span class="logo-dark">AUTHOR</span>
+            </a>
+        </div>
+
+        <!-- Tombol Bagian Kanan Header -->
+        <div class="header-right">
+            <a href="login.html" class="btn-login">LOGIN</a>
+            <a href="https://wattpad.com" target="_blank" class="btn-wattpad">WATTPAD PROFILE</a>
+        </div>
+    </header>
+
+    <!-- ================= MENU TAB SIDEBAR (DRAWER) ================= -->
+    <!-- Layer Gelap Latar Belakang saat Menu Terbuka -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Panel Sidebar Samping -->
+    <aside class="sidebar" id="sidebar">
+        <!-- Tombol Silang untuk Tutup Menu -->
+        <button class="close-btn" id="close-menu" aria-label="Tutup Menu">&times;</button>
+        
+        <!-- Daftar Link Navigasi untuk INDEX.HTML -->
+        <nav class="sidebar-nav">
+            <a href="index.html" class="active">HOME</a>
+            <a href="chapters.html">CHAPTERS</a>
+            <a href="character.html">CHARACTER</a>
+            <a href="stories.html">STORIES</a>
+            <a href="soundtrack.html">SOUNDTRACK</a>
+            <a href="login.html">LOGIN</a>
+        </nav>
+    </aside>
+
+    <!-- ================= KONTEN UTAMA PAGE STORIES ================= -->
+    <main class="container">
+        <section class="page-title">
+            <h1>DAFTAR CERITA & SINOPSIS</h1>
+            <p>Jelajahi kisah-kisah menarik dari Seraphina Universe di bawah ini.</p>
+        </section>
+
+        <section class="grid-stories">
+            <!-- Kartu Cerita 1 -->
+            <article class="story-card">
+                <div class="story-cover">
+                    <img src="https://img.wattpad.com/cover/394525898-256-k178743.jpg" alt="Sampul Cerita 1">
+                </div>
+                <div class="story-info">
+                    <span class="badge">FICTION</span>
+                    <h2>Kilau dan Debu S1</h2>
+                    <p>Tuliskan deskripsi ringkas atau sinopsis dari cerita pertamamu di sini. Buat pembaca penasaran dengan konflik utamanya!</p>
+                    <a href="#" class="btn-read">BACA SEKARANG</a>
+                </div>
+            </article>
+
+            <!-- Kartu Cerita 2 -->
+            <article class="story-card">
+                <div class="story-cover">
+                    <img src="https://img.wattpad.com/cover/401249977-256-k463182.jpg" alt="Sampul Cerita 2">
+                </div>
+                <div class="story-info">
+                    <span class="badge">MYSTERY</span>
+                    <h2>Judul Cerita Kedua</h2>
+                    <p>Penjelasan singkat mengenai misteri dan teka-teki yang akan dihadapi oleh para tokoh di dalam cerita ini.</p>
+                    <a href="#" class="btn-read">BACA SEKARANG</a>
+                </div>
+            </article>
+
+            <!-- Kartu Cerita 3 -->
+            <article class="story-card">
+                <div class="story-cover">
+                    <img src="https://img.wattpad.com/cover/413327092-256-k207704.jpg" alt="Sampul Cerita 2">
+                </div>
+                <div class="story-info">
+                    <span class="badge">MYSTERY</span>
+                    <h2>Rema dan Hening</h2>
+                    <p>Penjelasan singkat mengenai misteri dan teka-teki yang akan dihadapi oleh para tokoh di dalam cerita ini.</p>
+                    <a href="#" class="btn-read">BACA SEKARANG</a>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- ================= JAVASCRIPT UNTUK INTERAKSI MENU ================= -->
+    <script>
+        const openMenuBtn = document.getElementById('open-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        // Fungsi untuk membuka menu sidebar
+        function openSidebar() {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        // Fungsi untuk menutup menu sidebar
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        // Event listener saat tombol diklik
+        openMenuBtn.addEventListener('click', openSidebar);
+        closeMenuBtn.addEventListener('click', closeSidebar);
+        overlay.addEventListener('click', closeSidebar);
+    </script>
+</body>
+</html>

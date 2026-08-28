@@ -1,0 +1,261 @@
+/* Reset CSS Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f1319; /* Latar belakang gelap menyesuaikan tema website */
+    color: #ffffff;
+}
+
+/* ================= STYLING NAVBAR / HEADER ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Tombol Garis Tiga (Hamburger) */
+.menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-btn span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background-color: #ff3366; /* Warna Pink */
+    border-radius: 2px;
+}
+
+/* Logo Website */
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo-pink {
+    color: #ff3366;
+}
+
+.logo-dark {
+    color: #1a1a1a;
+}
+
+/* Tombol Kanan Header */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-login {
+    text-decoration: none;
+    color: #ff3366;
+    border: 2px solid #ff3366;
+    padding: 8px 22px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #ff3366;
+    color: #ffffff;
+}
+
+.btn-wattpad {
+    text-decoration: none;
+    background-color: #ff3366;
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.btn-wattpad:hover {
+    background-color: #e02855;
+}
+
+/* ================= STYLING SIDEBAR MENU (PERSIS FOTO 2) ================= */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Sembunyi di luar layar sebelah kiri */
+    width: 280px;
+    height: 100vh;
+    background-color: #242936; /* Warna abu-abu gelap sesuai gambar */
+    z-index: 1000;
+    padding: 40px 30px;
+    transition: left 0.3s ease-in-out;
+}
+
+/* Kelas saat sidebar aktif/terbuka */
+.sidebar.active {
+    left: 0;
+}
+
+/* Tombol Silang (Close) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Navigasi Link Menu */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    gap: 25px;
+}
+
+.sidebar-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    color: #ff3366;
+}
+
+/* Overlay Bayangan Latar Belakang */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* ================= STYLING KONTEN DAFTAR CERITA ================= */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-title h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.page-title p {
+    color: #aaa;
+}
+
+.grid-stories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.story-card {
+    background-color: #1a1f2b;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.story-cover img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.story-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+.badge {
+    align-self: flex-start;
+    background-color: rgba(255, 51, 102, 0.15);
+    color: #ff3366;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.story-info h2 {
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+.story-info p {
+    color: #bbb;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.btn-read {
+    margin-top: auto;
+    text-align: center;
+    text-decoration: none;
+    background-color: #ff3366;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: background-color 0.3s;
+}
+
+.btn-read:hover {
+    background-color: #e02855;
+}

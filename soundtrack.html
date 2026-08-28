@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundtrack - Seraphina Author</title>
+    <!-- Menghubungkan ke file CSS -->
+    <link rel="stylesheet" href="soundtrack.css">
+</head>
+<body>
+
+    <!-- ================= HEADER / NAVBAR ================= -->
+    <header class="navbar">
+        <div class="header-left">
+            <button class="menu-btn" onclick="toggleSidebar()" aria-label="Buka Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <a href="index.html" class="logo">
+                <span class="logo-pink">SERAPHINA</span>
+                <span class="logo-dark">AUTHOR</span>
+            </a>
+        </div>
+        <div class="header-right">
+            <a href="login.html" class="btn-login">LOGIN</a>
+            <a href="https://wattpad.com" target="_blank" class="btn-wattpad">WATTPAD PROFILE</a>
+        </div>
+    </header>
+
+    <!-- ================= SIDEBAR MENU ================= -->
+    <div id="mySidebar" class="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <ul class="sidebar-menu">
+            <li><a href="index.html" onclick="toggleSidebar()">HOME</a></li>
+            <li><a href="chapters.html" onclick="toggleSidebar()">CHAPTERS</a></li>
+            <li><a href="character.html" onclick="toggleSidebar()">CHARACTER</a></li>
+            <li><a href="stories.html" onclick="toggleSidebar()">STORIES</a></li>
+            <li><a href="soundtrack.html" class="active" onclick="toggleSidebar()">SOUNDTRACK</a></li>
+            <li><a href="login.html" onclick="toggleSidebar()">LOGIN</a></li>
+        </ul>
+    </div>
+    <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- ================= KONTEN UTAMA SOUNDTRACK ================= -->
+    <main class="container">
+        
+        <section class="page-header">
+            <span class="sub-title">OFFICIAL PLAYLIST</span>
+            <h1>Story <span class="highlight">Soundtrack</span></h1>
+            <p class="breadcrumb">Home &bull; <span class="active-crumb">Soundtrack</span></p>
+
+            <div class="filter-container">
+                <button class="filter-btn active">Semua Lagu</button>
+                <button class="filter-btn">Chapter 01</button>
+                <button class="filter-btn">Chapter 02</button>
+                <button class="filter-btn">Special Theme</button>
+            </div>
+        </section>
+
+        <!-- Grid Kartu Soundtrack dengan Player Audio Langsung -->
+        <section class="soundtrack-grid">
+
+            <!-- Kartu Lagu 1 -->
+            <article class="soundtrack-card">
+                <div class="card-image-wrapper">
+                    <span class="chapter-badge">Chapter 01 : Lilynn</span>
+                    <img src="https://i.pinimg.com/736x/54/f9/04/54f904b938ff63a214ccf063d6779c8b.jpg" alt="Cardigan Cover">
+                </div>
+                <div class="card-content">
+                    <h2>Cardigan</h2>
+                    <span class="artist">Taylor Swift</span>
+                    <p>Lagu pengiring momen ketika Lilynn pertama kali bertemu dengan Wakil Ketua OSIS di minimarket pada larut malam.</p>
+
+                    <!-- Pemutar Audio MP3 -->
+                    <div class="audio-container">
+                        <audio controls class="audio-player">
+                            <source src="Cardigan - Taylor Swift (Lyric Video).mp3" type="audio/mpeg">
+                            Browser kamu tidak mendukung pemutar audio.
+                        </audio>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Kartu Lagu 2 -->
+            <article class="soundtrack-card">
+                <div class="card-image-wrapper">
+                    <span class="chapter-badge">Chapter 02 : Awry?</span>
+                    <img src="Desktop Screenshot 2026.08.16 - 19.03.27.66.png" alt="Untouchable Cover">
+                </div>
+                <div class="card-content">
+                    <h2>Lovely</h2>
+                    <span class="artist">Hindia</span>
+                    <p>Membangun suasana tegang dan penuh misteri saat ditemukannya boneka gantung di kos Nala yang mencekam.</p>
+
+                    <!-- Pemutar Audio MP3 -->
+                    <div class="audio-container">
+                        <audio controls class="audio-player">
+                            <source src="Hindia - everything u are | Lirik Lagu [n8A2Ar_FU5s].mp3" type="audio/mpeg">
+                            Browser kamu tidak mendukung pemutar audio.
+                        </audio>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Kartu Lagu 3 -->
+            <article class="soundtrack-card">
+                <div class="card-image-wrapper">
+                    <span class="chapter-badge">Chapter 03 : Special</span>
+                    <img src="Desktop Screenshot 2026.08.16 - 19.16.21.90.png" alt="Best Days Cover">
+                </div>
+                <div class="card-content">
+                    <h2>Enchanted</h2>
+                    <span class="artist">Taylor Swift</span>
+                    <p>Lagu ceria yang mengiringi pesta ulang tahun Oline ke-16 serta momen prank seru dari Erine.</p>
+
+                    <!-- Pemutar Audio MP3 -->
+                    <div class="audio-container">
+                        <audio controls class="audio-player">
+                            <source src="Enchanted (Lyrics) - Taylor Swift [_PxWiIYDOWM].mp3" type="audio/mpeg">
+                            Browser kamu tidak mendukung pemutar audio.
+                        </audio>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Kartu Lagu 4 -->
+            <article class="soundtrack-card">
+                <div class="card-image-wrapper">
+                    <span class="chapter-badge">Chapter 04 : Special</span>
+                    <img src="Desktop Screenshot 2026.08.16 - 19.15.28.11.png" alt="Best Days Cover">
+                </div>
+                <div class="card-content">
+                    <h2>Satu-Satu</h2>
+                    <span class="artist">Idgitaf/span>
+                    <p>Lagu ceria yang mengiringi pesta ulang tahun Oline ke-16 serta momen prank seru dari Erine.</p>
+
+                    <!-- Pemutar Audio MP3 -->
+                    <div class="audio-container">
+                        <audio controls class="audio-player">
+                            <source src="Idgitaf - Satu-Satu (Official Lyric Video) [OPUTzPAluig].mp3" type="audio/mpeg">
+                            Browser kamu tidak mendukung pemutar audio.
+                        </audio>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Kartu Lagu 5 -->
+            <article class="soundtrack-card">
+                <div class="card-image-wrapper">
+                    <span class="chapter-badge">Chapter 05 : Illusion</span>
+                    <img src="Desktop Screenshot 2026.08.16 - 19.16.38.54.png" alt="Best Days Cover">
+                </div>
+                <div class="card-content">
+                    <h2>The Man Who Can't Be Moved</h2>
+                    <span class="artist">The Script</span>
+                    <p>Lagu ceria yang mengiringi pesta ulang tahun Oline ke-16 serta momen prank seru dari Erine.</p>
+
+                    <!-- Pemutar Audio MP3 -->
+                    <div class="audio-container">
+                        <audio controls class="audio-player">
+                            <source src="The Script - The Man Who Can't Be Moved (Lyrics) [V34-h9kLFLE].mp3" type="audio/mpeg">
+                            Browser kamu tidak mendukung pemutar audio.
+                        </audio>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Kartu Lagu 6 -->
+            <article class="soundtrack-card">
+                <div class="card-image-wrapper">
+                    <span class="chapter-badge">Chapter 06 : Special</span>
+                    <img src="Desktop Screenshot 2026.08.16 - 19.15.28.11.png" alt="Best Days Cover">
+                </div>
+                <div class="card-content">
+                    <h2>Best Days</h2>
+                    <span class="artist">Alessia Cara</span>
+                    <p>Lagu ceria yang mengiringi pesta ulang tahun Oline ke-16 serta momen prank seru dari Erine.</p>
+
+                    <!-- Pemutar Audio MP3 -->
+                    <div class="audio-container">
+                        <audio controls class="audio-player">
+                            <source src="musik/bestdays.mp3" type="audio/mpeg">
+                            Browser kamu tidak mendukung pemutar audio.
+                        </audio>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Kartu Lagu 7 -->
+            <article class="soundtrack-card">
+                <div class="card-image-wrapper">
+                    <span class="chapter-badge">Chapter 07 : Lush Paradisa</span>
+                    <img src="Desktop Screenshot 2026.08.16 - 19.16.38.54.png" alt="Best Days Cover">
+                </div>
+                <div class="card-content">
+                    <h2>Tarot</h2>
+                    <span class="artist">.Feast</span>
+                    <p>Lagu ceria yang mengiringi pesta ulang tahun Oline ke-16 serta momen prank seru dari Erine.</p>
+
+                    <!-- Pemutar Audio MP3 -->
+                    <div class="audio-container">
+                        <audio controls class="audio-player">
+                            <source src="Tarot - .Feast | Lirik Lagu.mp3" type="audio/mpeg">
+                            Browser kamu tidak mendukung pemutar audio.
+                        </audio>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Kartu Lagu 6 -->
+            <article class="soundtrack-card">
+                <div class="card-image-wrapper">
+                    <span class="chapter-badge">Chapter 06 : Special</span>
+                    <img src="Desktop Screenshot 2026.08.16 - 19.15.28.11.png" alt="Best Days Cover">
+                </div>
+                <div class="card-content">
+                    <h2>Best Days</h2>
+                    <span class="artist">Alessia Cara</span>
+                    <p>Lagu ceria yang mengiringi pesta ulang tahun Oline ke-16 serta momen prank seru dari Erine.</p>
+
+                    <!-- Pemutar Audio MP3 -->
+                    <div class="audio-container">
+                        <audio controls class="audio-player">
+                            <source src="musik/bestdays.mp3" type="audio/mpeg">
+                            Browser kamu tidak mendukung pemutar audio.
+                        </audio>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- JavaScript Interaktif -->
+    <script>
+        // 1. Fungsi Toggle Sidebar Menu
+        function toggleSidebar() {
+            const sidebar = document.getElementById("mySidebar");
+            const overlay = document.getElementById("sidebarOverlay");
+            if (sidebar && overlay) {
+                sidebar.classList.toggle("active");
+                overlay.classList.toggle("active");
+            }
+        }
+
+        // 2. Fungsi Menghentikan Lagu Lain Saat Ada Lagu Baru Diputar
+        const allAudios = document.querySelectorAll('audio');
+        allAudios.forEach(audio => {
+            audio.addEventListener('play', () => {
+                allAudios.forEach(otherAudio => {
+                    if (otherAudio !== audio) {
+                        otherAudio.pause();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

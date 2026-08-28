@@ -1,0 +1,526 @@
+/* Menyembunyikan scroll bar untuk Google Chrome, Safari, dan Edge */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Menyembunyikan scroll bar untuk Firefox */
+html {
+    scrollbar-width: none;
+}
+
+/* RESET & FONTS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth; /* Membuat efek scroll lebih halus */
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    
+    /* 3 Baris baru di bawah ini adalah kunci untuk mengatasi ruang putih */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+/* =========================================
+   NAVBAR & HAMBURGER MENU
+========================================= */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Jarak antara ikon hamburger dan logo */
+}
+
+.hamburger {
+    font-size: 28px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s;
+    line-height: 1;
+}
+
+.hamburger:hover {
+    color: #ff3366; /* Berubah pink saat disentuh kursor */
+}
+
+.logo a {
+    font-size: 22px;
+    font-weight: 900;
+    color: #ff3366; 
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo a span {
+    color: #333;
+}
+
+.btn-wattpad {
+    background-color: #ff3366;
+    color: white;
+    padding: 10px 18px; 
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: 25px; /* Sudut membulat modern */
+    box-shadow: 0 4px 10px rgba(255, 51, 102, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-wattpad:hover {
+    background-color: #e02855;
+    transform: translateY(-2px); /* Tombol sedikit terangkat */
+    box-shadow: 0 6px 15px rgba(255, 51, 102, 0.4);
+}
+
+/* SIDEBAR DI SAMPING KIRI DENGAN ANIMASI FADE & SLIDE */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #2b3140;
+    z-index: 2000;
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, visibility 0.4s ease;
+    box-shadow: 15px 0 35px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+}
+
+.sidebar.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.sidebar .close-btn:hover {
+    color: #ff3366;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0 30px;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin: 20px 0;
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
+    display: block;
+}
+
+.sidebar-menu a:hover {
+    color: #ff3366;
+}
+
+.lang-selector {
+    padding: 0 30px;
+    margin-top: 40px;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+/* SIDEBAR DI SAMPING KIRI */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #2b3140;
+    z-index: 2000;
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, visibility 0.4s ease;
+    box-shadow: 15px 0 35px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+}
+
+.sidebar.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.sidebar .close-btn:hover {
+    color: #ff3366;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0 30px;
+    margin: 0;
+}
+
+/* EFEK ANIMASI FADE-IN UNTUK MASING-MASING MENU */
+.sidebar-menu li {
+    margin: 20px 0;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.sidebar.active .sidebar-menu li:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+.sidebar.active .sidebar-menu li:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+.sidebar.active .sidebar-menu li:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+.sidebar.active .sidebar-menu li:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+.sidebar.active .sidebar-menu li:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+.sidebar.active .sidebar-menu li:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
+
+.sidebar-menu a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
+    display: block;
+}
+
+.sidebar-menu a:hover {
+    color: #ff3366;
+}
+
+/* OVERLAY GELAP DI LUAR SIDEBAR */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 1999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =========================================
+   HERO BANNER FULLSCREEN (DENGAN VIDEO)
+========================================= */
+.hero {
+    flex-grow: 1;        /* Ajaib! Ini membuat area video meregang menutupi semua ruang putih */
+    min-height: 80vh;    /* Memastikan videonya tidak terlalu pendek di layar kecil */
+    position: relative;
+    overflow: hidden; 
+}
+
+/* Pengaturan untuk Video Background */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Menjaga proporsi video agar tidak gepeng, memenuhi seluruh layar */
+    z-index: -1; /* Memastikan video berada di lapisan paling bawah (di belakang teks) */
+}
+
+.hero-overlay {
+    position: absolute; /* Diubah menjadi absolute agar bisa membentang penuh */
+    top: 0;             /* Menempel di dinding atas */
+    left: 0;            /* Menempel di dinding kiri */
+    width: 100%;
+    height: 100%;
+    /* Gradasi gelap agar teks putih lebih terbaca di atas video */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)); 
+    display: flex;
+    justify-content: center; /* Menengahkan teks secara horizontal (kiri-kanan) */
+    align-items: center;     /* Menengahkan teks secara vertikal (atas-bawah) */
+    text-align: center;
+    z-index: 1;
+}
+
+.hero-content {
+    color: white;
+    max-width: 800px;
+    padding: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tagline {
+    color: #ff3366;
+    font-weight: 800;
+    letter-spacing: 3px; 
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.sub-text {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #eee;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-main, .btn-secondary {
+    padding: 12px 30px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.btn-main {
+    background-color: #ff3366;
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: white;
+    border: 2px solid white;
+    backdrop-filter: blur(5px);
+}
+
+.btn-main:hover { 
+    background-color: #e02855; 
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 51, 102, 0.6);
+}
+
+.btn-secondary:hover { 
+    background-color: white; 
+    color: #333; 
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   LAYOUT SECTION UMUM
+========================================= */
+.section-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 20px; 
+}
+
+.bg-gray {
+    background-color: #f4f4f4; 
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #333; 
+    margin-bottom: 40px;
+    border-left: 6px solid #ff3366;
+    padding-left: 15px;
+    text-transform: uppercase;
+}
+
+.section-title span {
+    color: #ff3366; 
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* =========================================
+   CHAPTER GRID (KOTAK DAFTAR BAB)
+========================================= */
+.chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.chapter-card {
+    background: white;
+    padding: 30px 25px; 
+    border-radius: 12px; 
+    border-top: 5px solid #e32034; /* Ubah ke merah JKT48 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.chapter-card:hover {
+    transform: translateY(-8px); /* Kotak terangkat naik */
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.chapter-number {
+    font-size: 13px;
+    font-weight: 900;
+    background-color: #fbebee; /* Disesuaikan agar pas dengan merah baru */
+    color: #e32034; /* Ubah ke merah JKT48 */
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.chapter-card h3 {
+    font-size: 20px;
+    color: #222;
+    margin-bottom: 12px;
+    font-weight: 800;
+}
+
+.chapter-desc {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   GAYA TOMBOL BACA BAB (MODERN & ESTETIK)
+========================================= */
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;                         /* Jarak teks dan panah */
+    background-color: #e32034;        /* Warna latar tombol merah */
+    color: #ffffff !important;        /* Warna teks menjadi putih */
+    padding: 10px 20px;               /* Membuat bentuk tombol */
+    border-radius: 25px;              /* Membuat sudut tombol membulat estetik */
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(227, 32, 52, 0.25); /* Efek bayangan */
+    transition: all 0.3s ease;
+    margin-top: 15px;                 /* Memberi jarak dari teks deskripsi di atasnya */
+}
+
+/* EFEK SAAT KURSOR DIARAHKAN KE TOMBOL (HOVER) */
+.read-more:hover {
+    background-color: #c9182b;        /* Warna sedikit menggelap saat disentuh */
+    transform: translateY(-3px);      /* Tombol sedikit terangkat */
+    box-shadow: 0 6px 18px rgba(227, 32, 52, 0.4);
+    color: #ffffff !important;
+}
+
+/* EFEK ANIMASI PANAH SAAT DI-HOVER */
+.read-more:hover span, 
+.read-more:hover {
+    gap: 12px; /* Panah bergerak sedikit ke kanan */
+}
+
+/* =========================================
+   GAYA FOOTER HITAM ELEGAN & RATA TENGAH
+========================================= */
+footer {
+    background-color: #111111; 
+    color: #ffffff;            
+    text-align: center;        
+    padding: 25px 20px;        
+    font-size: 13px;           
+    letter-spacing: 0.5px;     
+    width: 100%;               
+    position: relative;
+    clear: both;
+    
+    /* Tambahan baru: Mendorong footer agar menempel di paling bawah */
+    margin-top: auto; 
+}
+
+/* TOMBOL LOGIN */
+.btn-login {
+    background-color: transparent;
+    color: #ff3366;
+    border: 2px solid #ff3366;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #ff3366;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 51, 102, 0.3);
+}

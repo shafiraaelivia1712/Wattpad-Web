@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character - Seraphina Author</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Mencegah scrollbar bawaan */
+        html {
+            scrollbar-width: none;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7; /* Background putih bersih ala JKT48 */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #111;
+        }
+
+        /* HEADER HALAMAN KARAKTER */
+        .character-page-header {
+            text-align: center;
+            padding: 40px 20px 20px 20px;
+        }
+
+        .subtitle-top {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .main-title {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #111;
+            margin: 0;
+        }
+
+        .main-title span {
+            color: #ff3366; /* Warna merah khas */
+        }
+
+        .breadcrumb {
+            font-size: 13px;
+            color: #777;
+            margin-top: 8px;
+        }
+
+        .breadcrumb span {
+            color: #ff3366;
+            font-weight: 600;
+        }
+
+        /* TOMBOL KATEGORI FILTER (SEPERTI SEMUA MEMBER, TEAM, DST) */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 30px 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .filter-btn.active {
+            background-color: #ff3366;
+            color: white;
+            border-color: #ff3366;
+            box-shadow: 0 4px 12px rgba(255, 51, 102, 0.3);
+        }
+
+        .filter-btn:hover {
+            border-color: #ff3366;
+            color: #ff3366;
+        }
+
+        .filter-btn.active:hover {
+            color: white;
+        }
+
+        /* GRID KARTU KARAKTER PERSIS GAYA JKT48 */
+        .character-container {
+            max-width: 1100px;
+            margin: 0 auto 60px auto;
+            padding: 0 20px;
+        }
+
+        /* Pengaturan default (untuk layar besar / full screen) */
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 30px;
+        }
+
+        /* --- TAMBAHKAN KODE DI BAWAH INI --- */
+
+        /* Aturan untuk layar sedang (seperti layar laptop kecil atau tablet) */
+        @media screen and (max-width: 1024px) {
+            .character-grid {
+                grid-template-columns: repeat(3, 1fr); /* Menjadi 3 kolom */
+                gap: 25px; 
+            }
+        }
+
+        /* Aturan jika layar dipersempit lagi (seperti saat dibagi 2 layar) */
+        @media screen and (max-width: 768px) {
+            .character-grid {
+                grid-template-columns: repeat(2, 1fr); /* Menjadi 2 kolom */
+                gap: 20px;
+            }
+        }
+
+        /* Aturan jika layar sangat sempit (seukuran HP vertikal) */
+        @media screen and (max-width: 480px) {
+            .character-grid {
+                grid-template-columns: repeat(1, 1fr); /* Menjadi 1 kolom */
+            }
+        }
+
+        .character-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+       /* BINGKAI MERAH UTAMA KARTU */
+        .character-card {
+            background: #ffffff;
+            border: 8px solid #ff3366; /* Mengubah ketebalan bingkai dari 3px menjadi 8px */
+            position: relative;
+            padding: 6px; /* Jarak antara bingkai luar dan foto */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(255, 51, 102, 0.2);
+        }
+
+        /* ORNAMEN BINTANG KECIL DI SUDUT-SUDUT BINGKAI */
+        .corner-star {
+            position: absolute;
+            color: #ff3366;
+            font-size: 22px; /* Mengubah ukuran bintang dari 12px menjadi 18px */
+            font-weight: bold; /* Tambahan: Membuat bintang sedikit lebih tebal/tegas */
+            line-height: 1;
+            z-index: 2;
+        }
+
+        /* Jika setelah diperbesar posisi bintang terasa terlalu mepet ke tepi, 
+           kamu bisa menyesuaikan angka '4px' atau '6px' di bawah ini */
+        .star-top-left { top: 4px; left: 6px; }
+        .star-bottom-right { bottom: 4px; right: 6px; }
+
+        /* AREA FOTO PORTRAIT */
+        .character-img-wrapper {
+            width: 100%;
+            height: 280px;
+            background-color: #eaeaea;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .character-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* NAMA KARAKTER DI BAWAH KARTU */
+        .character-name {
+            margin-top: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" style="background: white; border-bottom: 1px solid #eee;">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="hamburger" onclick="toggleSidebar()" style="color: #111;">&#9776;</div>
+                <div class="logo">
+                    <a href="index.html" style="color: #111;">SERAPHINA <span style="color: #ff3366;">AUTHOR</span></a>
+                </div>
+            </div>
+
+            <div class="nav-right" style="display: flex; gap: 10px; align-items: center;">
+                <a href="login.html" class="btn-login" style="color: #ff3366; border: 2px solid #ff3366;">LOGIN</a>
+                <a href="https://wattpad.com" target="_blank" class="btn-wattpad" style="background: #ff3366; color: white;">WATTPAD PROFILE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <div id="mySidebar" class="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <ul class="sidebar-menu">
+            <li><a href="index.html" onclick="toggleSidebar()">HOME</a></li>
+            <li><a href="chapters.html" onclick="toggleSidebar()">CHAPTERS</a></li>
+            <!-- class="active" dipasang di menu CHARACTER -->
+            <li><a href="character.html" class="active" onclick="toggleSidebar()">CHARACTER</a></li>
+            <li><a href="stories.html" onclick="toggleSidebar()">STORIES</a></li>
+            <li><a href="soundtrack.html" onclick="toggleSidebar()">SOUNDTRACK</a></li>
+            <li><a href="login.html" onclick="toggleSidebar()">LOGIN</a></li>
+        </ul>
+    </div>
+    <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <div class="character-page-header">
+        <div class="subtitle-top">PROFIL LENGKAP</div>
+        <h1 class="main-title">Character <span>Cerita</span></h1>
+        <div class="breadcrumb">Home • <span>Character</span></div>
+    </div>
+
+    <div class="category-filter">
+        <button class="filter-btn active">Semua Karakter</button>
+        <button class="filter-btn">Main Role</button>
+        <button class="filter-btn">Supporting</button>
+        <button class="filter-btn">Antagonis</button>
+    </div>
+
+    <div class="character-container">
+        <div class="character-grid">
+            
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/7f/69/79/7f697922266be8bbd27f108d38f2ae68.jpg" alt="Aralie" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Abigail Cassia Rachel Cornelio</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/1200x/e7/53/43/e753435ab304050d85494de6dc68d050.jpg" alt="Delynn" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Adeline Angelina Wijaya</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/8b/89/64/8b89640aa51041762c8606505483938c.jpg" alt="Shasa" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Aisa Maharani Vanisa</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/94/68/96/94689688e4140d75b1c73f291c6d7118.jpg" alt="Lana" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Aurhel Alana Salsabila</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/36/d3/4f/36d34f2667775deb80395656ea0f43d8.jpg" alt="Erine" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Catherina Vallencia Kencana</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/57/7f/b9/577fb9c445c2ef98f5b8a07b29499fad.jpg" alt="Fritzy" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Fritzy Rosmerian Jaya Wardhana</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="http://i.pinimg.com/736x/93/52/ed/9352ed2fc570d48a136caae4ee629037.jpg" alt="Lily" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Hillary Putri Abigail</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/ee/15/21/ee1521b08818a5b2cce1a8ecb72d2281.jpg" alt="Trisha" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Jazzlyn Trisha Kathrina</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/b6/77/78/b6777855c40e3324584fea009e94c01e.jpg" alt="Moreen" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Letycia Moreen Aurelia</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/74/1b/56/741b56f62c784dc3e98f84fa5a14b0d1.jpg" alt="Levi" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Michelle Levian Shania</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/6d/23/eb/6d23ebea1e4cfaf5c0926a6db9d07e60.jpg" alt="Nayla" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Nayla Aurellia Suji</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/52/16/da/5216da6a21fcc686570111961b6b65be.jpg" alt="Nina" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Nina Alifiya Tutachia Ellaria</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/c9/f3/73/c9f373af88d65fbe376126db9b5b55a7.jpg" alt="Oline" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Oline Clara Manuel</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/fc/b7/3f/fcb73f9dcbb1164bbbacab1abf289886.jpg" alt="Regie" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Regina William Andriani</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/0d/02/24/0d022486a0ee6d9662259a5baf9d1118.jpg" alt="Ribka" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Ribka Cahya Vanisa</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/63/39/76/6339763aadcf0e45249c11cefb9b4bed.jpg" alt="Nala" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Shabilqis Naila Antasari</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/26/3d/e6/263de67e3ee22be2af2e8c187779454e.jpg" alt="KImmy" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Victoria Angelina Kimberly</div>
+            </div>
+            
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/de/0d/cd/de0dcd762e2b9d64e144cb46b9769c0f.jpg" alt="Virgi" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Astrella Mandira Virgiananda</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/96/17/03/9617031c65868f77187ae7c87b8866d9.jpg" alt="Auwia" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Christian Auwia Kathrina</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/ee/63/5a/ee635aa9b796786b50df081573fe0a43.jpg" alt="Rilly" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Aprillia Cantika</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="http://i.pinimg.com/736x/b6/70/90/b6709067df6f18ac4033ae29cbb62c41.jpg" alt="Gia" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Hagia Septriana</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/ca/d9/b5/cad9b5339d444630ddd9b7555a5ee05a.jpg" alt="Maira" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Humaira Catherina Manuel</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/41/53/b9/4153b9033274c18bb43f6adec923a5e7.jpg" alt="Ekin" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Jacqueline Cahya Immanuela</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/5b/4b/ec/5b4becfa87cd027fe76f4cbb309a0830.jpg" alt="Jemima" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Jemima Adeline Evodie</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/55/b6/c6/55b6c6c2263694c5b886d201d1d16e00.jpg" alt="Mikaela" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Mikaela Chyntia Yaputra</div>
+            </div>
+
+            <div class="character-item">
+                <div class="character-card">
+                    <span class="corner-star star-top-left">✦</span>
+                    <div class="character-img-wrapper">
+                        <img src="https://i.pinimg.com/736x/d4/2f/63/d42f63963a8c72f218cdefed607fc072.jpg" alt="Intan" class="character-img">
+                    </div>
+                    <span class="corner-star star-bottom-right">✦</span>
+                </div>
+                <div class="character-name">Intan Cassia Shania</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

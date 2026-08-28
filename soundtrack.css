@@ -1,0 +1,360 @@
+/* ================= 1. RESET DASAR & LATAR BELAKANG ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #2b2b2b;
+}
+
+/* ================= 2. STYLING NAVBAR / HEADER ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Tombol Garis Tiga (Hamburger) */
+.menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-btn span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: #ff3366;
+    border-radius: 2px;
+}
+
+/* Logo Website */
+.logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo-pink {
+    color: #ff3366;
+}
+
+.logo-dark {
+    color: #1a1a1a;
+}
+
+/* Tombol Kanan Header */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-login {
+    text-decoration: none;
+    color: #ff3366;
+    border: 2px solid #ff3366;
+    padding: 8px 22px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #ff3366;
+    color: #ffffff;
+}
+
+.btn-wattpad {
+    text-decoration: none;
+    background-color: #ff3366;
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.btn-wattpad:hover {
+    background-color: #e02855;
+}
+
+/* ================= 3. STYLING SIDEBAR MENU (MEMBUKA SAMPLING) ================= */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Sembunyi di luar layar */
+    width: 280px;
+    height: 100vh;
+    background-color: #242936;
+    z-index: 1000;
+    padding: 40px 30px;
+    transition: left 0.3s ease-in-out;
+}
+
+.sidebar.active {
+    left: 0; /* Tampil saat aktif */
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.sidebar-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    color: #ff3366;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 999;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+/* ================= 4. KONTEN HALAMAN SOUNDTRACK ================= */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header .sub-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ff3366;
+    letter-spacing: 2px;
+}
+
+.page-header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 8px 0;
+    color: #1a1a1a;
+}
+
+.page-header h1 .highlight {
+    color: #ff3366;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 25px;
+}
+
+.breadcrumb .active-crumb {
+    color: #ff3366;
+    font-weight: 600;
+}
+
+/* Filter Buttons */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.filter-btn {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #4a5568;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: #ff3366;
+    color: #ffffff;
+    border-color: #ff3366;
+}
+
+/* Grid Soundtrack */
+.soundtrack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.soundtrack-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    border-top: 4px solid #ff3366;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.soundtrack-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(255, 51, 102, 0.12);
+}
+
+.card-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background-color: #e2e8f0;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.chapter-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: rgba(36, 41, 54, 0.9);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+
+.card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-content h2 {
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.card-content .artist {
+    font-size: 0.85rem;
+    color: #ff3366;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.btn-play {
+    text-align: center;
+    text-decoration: none;
+    background-color: #ff3366;
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-play:hover {
+    background-color: #e02855;
+}
+
+/* ================= STYLING PEMUTAR AUDIO MP3 ================= */
+
+.audio-container {
+    margin-top: auto; /* Memastikan pemutar lagu berada di bagian paling bawah kartu */
+    padding-top: 15px;
+    width: 100%;
+}
+
+.audio-player {
+    width: 100%;
+    height: 42px;
+    border-radius: 25px;
+    outline: none;
+    background-color: #f1f3f5;
+}
+
+/* Kustomisasi warna pemutar audio (Browser Chrome/Edge/Opera) */
+.audio-player::-webkit-media-controls-panel {
+    background-color: #f1f3f5;
+    border-radius: 25px;
+}
+
+.audio-player::-webkit-media-controls-play-button {
+    background-color: #ff3366;
+    border-radius: 50%;
+}
