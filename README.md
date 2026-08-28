@@ -1,0 +1,1 @@
+HI, Guys! Kenalin nama gw Serafira atau Elviia, tapi kalo di real life orang orang biasa manggil gw adalah Shafira atau Fira! 👋🏻 Hanya sekedar anak SMK yang menjadi editor dan programmer, dan bekerja sampingan menjadi author! ✍💻
