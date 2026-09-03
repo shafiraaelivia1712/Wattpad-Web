@@ -6,23 +6,23 @@
     <title>Seraphina Author - Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <body class="home-body">
+<body class="home-body">
+
     <!-- NAVIGASI & HAMBURGER MENU -->
     <nav class="navbar">
-    <div class="nav-container">
-        <div class="nav-left">
-            <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
-            <div class="logo">
-                <a href="index.html">SERAPHINA <span>AUTHOR</span></a>
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+                <div class="logo">
+                    <a href="index.html">SERAPHINA <span>AUTHOR</span></a>
+                </div>
+            </div>
+        
+            <div class="nav-right" style="display: flex; gap: 10px; align-items: center;">
+                <a href="login.html" class="btn-login">LOGIN</a>
+                <a href="https://wattpad.com" target="_blank" class="btn-wattpad">WATTPAD PROFILE</a>
             </div>
         </div>
-    
-        <div class="nav-right" style="display: flex; gap: 10px; align-items: center;">
-            <a href="login.html" class="btn-login">LOGIN</a>
-            <a href="https://wattpad.com" target="_blank" class="btn-wattpad">WATTPAD PROFILE</a>
-        </div>
-    </div>
     </nav>
 
     <!-- SIDEBAR -->
@@ -40,9 +40,8 @@
 
     <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-    <!-- HERO BANNER (Hanya ada di Halaman Home) -->
+    <!-- HERO BANNER -->
     <header class="hero">
-        <!-- KODE VIDEO BACKGROUND -->
         <video autoplay loop muted playsinline class="hero-video">
             <source src="bg.mp4" type="video/mp4">
         </video>
@@ -54,7 +53,7 @@
                 <p class="sub-text">Menembus batas realita dan fiksi. Temukan tempat berlabuhnya para pemimpi di sini.</p>
                 <div class="hero-buttons">
                     <a href="https://www.wattpad.com/story/394525898-kilau-dan-debu-s1-end" target="_blank" class="btn-main">MULAI MEMBACA</a>
-            </div>
+                </div>
             </div>
         </div>
     </header>
@@ -68,10 +67,14 @@
         function toggleSidebar() {
             var sidebar = document.getElementById("mySidebar");
             sidebar.classList.toggle("active");
+            
+            // Opsional: untuk mengaktifkan overlay jika ada
+            var overlay = document.getElementById("sidebarOverlay");
+            if(overlay) {
+                overlay.classList.toggle("active");
+            }
         }
     </script>
-
     <script src="script.js"></script>
-    </body>
 </body>
 </html>
