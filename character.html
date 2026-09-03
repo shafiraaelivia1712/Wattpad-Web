@@ -38,7 +38,7 @@
         }
 
         .main-title {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 900;
             letter-spacing: 1px;
             color: #111;
@@ -94,31 +94,31 @@
             color: #ff3366;
         }
 
-        /* GRID KARTU KARAKTER (DEFAULT UNTUK HP: 2 KOLOM) */
+        /* GRID KARTU KARAKTER (DESKTOP-FIRST AGAR LAPTOP TETAP 4 KOLOM) */
         .character-container {
             max-width: 1100px;
             margin: 0 auto 50px auto;
-            padding: 0 12px;
+            padding: 0 15px;
         }
 
         .character-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Default HP: 2 Kolom */
-            gap: 12px;
+            grid-template-columns: repeat(4, 1fr); /* Laptop: 4 Kolom */
+            gap: 25px;
         }
 
-        /* RESPONSIVE UNTUK LAYAR TABLET & LAPTOP (MIN-WIDTH) */
-        @media screen and (min-width: 768px) {
+        /* RESPONSIVE LAYAR (MEDIA QUERIES UNTUK TABLET & HP) */
+        @media screen and (max-width: 1024px) {
             .character-grid {
-                grid-template-columns: repeat(3, 1fr); /* Tablet: 3 Kolom */
-                gap: 18px;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px; 
             }
         }
 
-        @media screen and (min-width: 1024px) {
+        @media screen and (max-width: 768px) {
             .character-grid {
-                grid-template-columns: repeat(4, 1fr); /* Laptop/Desktop: 4 Kolom */
-                gap: 25px;
+                grid-template-columns: repeat(2, 1fr); /* HP: 2 Kolom pas */
+                gap: 15px;
             }
         }
 
@@ -130,35 +130,35 @@
         /* BINGKAI MERAH KARTU */
         .character-card {
             background: #ffffff;
-            border: 5px solid #ff3366; 
+            border: 6px solid #ff3366; 
             position: relative;
             padding: 4px; 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .character-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 18px rgba(255, 51, 102, 0.2);
+            box-shadow: 0 10px 20px rgba(255, 51, 102, 0.2);
         }
 
         /* ORNAMEN BINTANG KECIL */
         .corner-star {
             position: absolute;
             color: #ff3366;
-            font-size: 16px; 
+            font-size: 18px; 
             font-weight: bold; 
             line-height: 1;
             z-index: 2;
         }
 
-        .star-top-left { top: 2px; left: 3px; }
-        .star-bottom-right { bottom: 2px; right: 3px; }
+        .star-top-left { top: 3px; left: 4px; }
+        .star-bottom-right { bottom: 3px; right: 4px; }
 
-        /* AREA FOTO PORTRAIT */
+        /* AREA FOTO RASIO 3:4 DI LAPTOP */
         .character-img-wrapper {
             width: 100%;
-            height: 210px; /* Disesuaikan agar pas bentuk portrait di HP */
+            aspect-ratio: 3 / 4; /* Membuat foto otomatis berukuran rasio 3:4 */
             background-color: #eaeaea;
             overflow: hidden;
             position: relative;
@@ -174,12 +174,12 @@
         /* NAMA KARAKTER DI BAWAH KARTU */
         .character-name {
             margin-top: 8px;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             color: #111;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.3px;
             line-height: 1.3;
-            text-align: center; /* Rata tengah agar rapi */
+            text-align: center;
         }
     </style>
 </head>
