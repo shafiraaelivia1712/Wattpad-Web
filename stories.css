@@ -1,36 +1,44 @@
-/* Reset CSS Dasar */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* =========================================
+   1. ROOT & RESET (TEMA TERANG)
+   ========================================= */
+:root {
+    --bg-color: #fafafa;
+    --text-main: #111111;
+    --text-muted: #888888;
+    --accent-color: #ff3366; /* Pink cerah sesuai referensi */
+    --border-color: #eaeaea;
 }
 
 body {
-    background-color: #0f1319; /* Latar belakang gelap menyesuaikan tema website */
-    color: #ffffff;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
-/* ================= STYLING NAVBAR / HEADER ================= */
+/* =========================================
+   2. NAVBAR & HEADER
+   ========================================= */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem 2rem;
     background-color: #ffffff;
-    padding: 15px 30px;
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 1.5rem;
 }
 
-/* Tombol Garis Tiga (Hamburger) */
 .menu-btn {
     background: none;
     border: none;
@@ -38,224 +46,291 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    padding: 5px;
 }
 
 .menu-btn span {
     display: block;
-    width: 26px;
+    width: 25px;
     height: 3px;
-    background-color: #ff3366; /* Warna Pink */
-    border-radius: 2px;
+    background-color: var(--text-main);
+    border-radius: 3px;
+    transition: 0.3s ease;
 }
 
-/* Logo Website */
 .logo {
-    font-size: 1.4rem;
-    font-weight: 800;
     text-decoration: none;
-    letter-spacing: 1px;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+}
+
+.logo-black {
+    color: var(--text-main);
+    font-weight: 800;
 }
 
 .logo-pink {
-    color: #ff3366;
+    color: var(--accent-color);
+    font-weight: 800;
 }
 
-.logo-dark {
-    color: #1a1a1a;
-}
-
-/* Tombol Kanan Header */
 .header-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 1rem;
 }
 
 .btn-login {
+    color: var(--accent-color);
     text-decoration: none;
-    color: #ff3366;
-    border: 2px solid #ff3366;
-    padding: 8px 22px;
-    border-radius: 25px;
+    font-weight: 600;
     font-size: 0.85rem;
-    font-weight: 700;
-    transition: all 0.3s;
+    border: 1.5px solid var(--accent-color);
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px; /* Bentuk Pill */
+    transition: 0.3s;
 }
 
 .btn-login:hover {
-    background-color: #ff3366;
-    color: #ffffff;
+    background-color: var(--accent-color);
+    color: #fff;
 }
 
 .btn-wattpad {
+    background: var(--accent-color);
+    color: #fff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px; /* Bentuk Pill */
     text-decoration: none;
-    background-color: #ff3366;
-    color: #ffffff;
-    padding: 10px 22px;
-    border-radius: 25px;
+    font-weight: 600;
     font-size: 0.85rem;
-    font-weight: 700;
-    transition: background-color 0.3s;
+    border: 1.5px solid var(--accent-color);
+    transition: 0.3s;
 }
 
 .btn-wattpad:hover {
-    background-color: #e02855;
+    background-color: #e62e5c;
+    border-color: #e62e5c;
 }
 
-/* ================= STYLING SIDEBAR MENU (PERSIS FOTO 2) ================= */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: -300px; /* Sembunyi di luar layar sebelah kiri */
-    width: 280px;
-    height: 100vh;
-    background-color: #242936; /* Warna abu-abu gelap sesuai gambar */
-    z-index: 1000;
-    padding: 40px 30px;
-    transition: left 0.3s ease-in-out;
-}
-
-/* Kelas saat sidebar aktif/terbuka */
-.sidebar.active {
-    left: 0;
-}
-
-/* Tombol Silang (Close) */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 2rem;
-    cursor: pointer;
-}
-
-/* Navigasi Link Menu */
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-    gap: 25px;
-}
-
-.sidebar-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    transition: color 0.2s;
-}
-
-.sidebar-nav a:hover,
-.sidebar-nav a.active {
-    color: #ff3366;
-}
-
-/* Overlay Bayangan Latar Belakang */
+/* =========================================
+   3. SIDEBAR MENU & OVERLAY (Tetap Gelap Sesuai Estetika)
+   ========================================= */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
-    display: none;
-    z-index: 999;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
 }
 
 .overlay.active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
-/* ================= STYLING KONTEN DAFTAR CERITA ================= */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 260px;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 999;
+    padding: 2rem;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 2.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 4rem;
+}
+
+.sidebar-nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.sidebar-nav a:hover, .sidebar-nav a.active {
+    color: var(--accent-color);
+}
+
+/* =========================================
+   4. KONTEN HALAMAN (Sesuai Referensi Gambar)
+   ========================================= */
 .container {
     max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
 }
 
 .page-title {
     text-align: center;
-    margin-bottom: 40px;
+    padding: 3rem 1rem 1.5rem;
+}
+
+.subtitle {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
 }
 
 .page-title h1 {
-    font-size: 2rem;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+}
+
+.highlight {
+    color: var(--accent-color);
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* === Tombol Filter / Kategori === */
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.filter-btn {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px; /* Bentuk Pill */
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.filter-btn.active {
+    background: var(--accent-color);
     color: #ffffff;
+    border-color: var(--accent-color);
 }
 
-.page-title p {
-    color: #aaa;
+.filter-btn:hover:not(.active) {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
 }
 
+/* =========================================
+   5. GRID & KARTU CERITA (BINGKAI PINK)
+   ========================================= */
 .grid-stories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
 }
 
 .story-card {
-    background-color: #1a1f2b;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-}
-
-.story-cover img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-}
-
-.story-info {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex-grow: 1;
-}
-
-.badge {
-    align-self: flex-start;
-    background-color: rgba(255, 51, 102, 0.15);
-    color: #ff3366;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 0.75rem;
-    font-weight: 700;
-}
-
-.story-info h2 {
-    font-size: 1.3rem;
-    color: #ffffff;
-}
-
-.story-info p {
-    color: #bbb;
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-.btn-read {
-    margin-top: auto;
-    text-align: center;
     text-decoration: none;
-    background-color: #ff3366;
-    color: white;
-    padding: 10px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
-.btn-read:hover {
-    background-color: #e02855;
+.card-frame {
+    width: 100%;
+    aspect-ratio: 2 / 3; /* Rasio potret untuk cover buku */
+    background: #ffffff;
+    border: 3px solid var(--accent-color);
+    padding: 6px; /* Jarak putih antara border dan gambar */
+    position: relative;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.story-card:hover .card-frame {
+    transform: scale(1.03);
+}
+
+/* Membuat ornamen bintang kecil di sudut seperti referensi */
+.card-frame::before,
+.card-frame::after {
+    content: "✦";
+    position: absolute;
+    color: var(--accent-color);
+    font-size: 14px;
+    line-height: 1;
+}
+
+.card-frame::before {
+    top: -2px;
+    left: 1px;
+}
+
+.card-frame::after {
+    bottom: -2px;
+    right: 1px;
+}
+
+.card-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.story-card h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0;
+    text-align: center;
+}
+
+/* =========================================
+   6. RESPONSIVE DESIGN (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+    .header-right {
+        display: none;
+    }
+    
+    .grid-stories {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
 }
