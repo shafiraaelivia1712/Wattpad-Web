@@ -94,7 +94,7 @@
             color: #ff3366;
         }
 
-        /* GRID KARTU KARAKTER */
+        /* GRID KARTU KARAKTER (DEFAULT UNTUK HP: 2 KOLOM) */
         .character-container {
             max-width: 1100px;
             margin: 0 auto 50px auto;
@@ -103,22 +103,22 @@
 
         .character-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 25px;
+            grid-template-columns: repeat(2, 1fr); /* Default HP: 2 Kolom */
+            gap: 12px;
         }
 
-        /* RESPONSIVE LAYAR (MEDIA QUERIES) */
-        @media screen and (max-width: 1024px) {
+        /* RESPONSIVE UNTUK LAYAR TABLET & LAPTOP (MIN-WIDTH) */
+        @media screen and (min-width: 768px) {
             .character-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px; 
+                grid-template-columns: repeat(3, 1fr); /* Tablet: 3 Kolom */
+                gap: 18px;
             }
         }
 
-        @media screen and (max-width: 768px) {
+        @media screen and (min-width: 1024px) {
             .character-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 Kolom pas di layar HP */
-                gap: 12px;
+                grid-template-columns: repeat(4, 1fr); /* Laptop/Desktop: 4 Kolom */
+                gap: 25px;
             }
         }
 
