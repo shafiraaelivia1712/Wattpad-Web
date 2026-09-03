@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stories - Seraphina Author</title>
+    
+    <!-- Import Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Menghubungkan ke file CSS -->
     <link rel="stylesheet" href="stories.css">
 </head>
@@ -12,42 +18,29 @@
     <!-- ================= NAVBAR / HEADER ATAS ================= -->
     <header class="navbar">
         <div class="header-left">
-            <!-- Tombol Garis Tiga (Hamburger Menu) -->
             <button class="menu-btn" id="open-menu" aria-label="Buka Menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
-            
-            <!-- Logo Website -->
             <a href="index.html" class="logo">
-                <span class="logo-pink">SERAPHINA</span>
-                <span class="logo-dark">AUTHOR</span>
+                <span class="logo-black">SERAPHINA</span>
+                <span class="logo-pink">AUTHOR</span>
             </a>
         </div>
-
-        <!-- Tombol Bagian Kanan Header -->
         <div class="header-right">
             <a href="login.html" class="btn-login">LOGIN</a>
             <a href="https://wattpad.com" target="_blank" class="btn-wattpad">WATTPAD PROFILE</a>
         </div>
     </header>
 
-    <!-- ================= MENU TAB SIDEBAR (DRAWER) ================= -->
-    <!-- Layer Gelap Latar Belakang saat Menu Terbuka -->
+    <!-- ================= MENU TAB SIDEBAR ================= -->
     <div class="overlay" id="overlay"></div>
-
-    <!-- Panel Sidebar Samping -->
     <aside class="sidebar" id="sidebar">
-        <!-- Tombol Silang untuk Tutup Menu -->
         <button class="close-btn" id="close-menu" aria-label="Tutup Menu">&times;</button>
-        
-        <!-- Daftar Link Navigasi untuk INDEX.HTML -->
         <nav class="sidebar-nav">
-            <a href="index.html" class="active">HOME</a>
+            <a href="index.html">HOME</a>
             <a href="chapters.html">CHAPTERS</a>
             <a href="character.html">CHARACTER</a>
-            <a href="stories.html">STORIES</a>
+            <a href="stories.html" class="active">STORIES</a>
             <a href="soundtrack.html">SOUNDTRACK</a>
             <a href="login.html">LOGIN</a>
         </nav>
@@ -55,89 +48,79 @@
 
     <!-- ================= KONTEN UTAMA PAGE STORIES ================= -->
     <main class="container">
+        <!-- Bagian Judul -->
         <section class="page-title">
-            <h1>DAFTAR CERITA & SINOPSIS</h1>
-            <p>Jelajahi kisah-kisah menarik dari Seraphina Universe di bawah ini.</p>
+            <span class="subtitle">DAFTAR LENGKAP</span>
+            <h1>Koleksi <span class="highlight">Cerita</span></h1>
+            <p class="breadcrumb">Home > <span class="highlight">Stories</span></p>
         </section>
 
+        <!-- Tombol Filter / Kategori (Sesuai Referensi) -->
+        <div class="filter-tabs">
+            <button class="filter-btn active">Semua Cerita</button>
+            <button class="filter-btn">Fiction</button>
+            <button class="filter-btn">Mystery</button>
+            <button class="filter-btn">Family</button>
+        </div>
+
+        <!-- Grid Kartu Cerita -->
         <section class="grid-stories">
-            <!-- Kartu Cerita 1 -->
-            <article class="story-card">
-                <div class="story-cover">
-                    <img src="https://img.wattpad.com/cover/394525898-256-k178743.jpg" alt="Sampul Cerita 1">
+            
+            <!-- Kartu 1 -->
+            <a href="#" class="story-card">
+                <div class="card-frame">
+                    <img src="https://img.wattpad.com/cover/394525898-256-k178743.jpg" alt="Kilau dan Debu S1">
                 </div>
-                <div class="story-info">
-                    <span class="badge">FICTION</span>
-                    <h2>Kilau dan Debu S1</h2>
-                    <p>Tuliskan deskripsi ringkas atau sinopsis dari cerita pertamamu di sini. Buat pembaca penasaran dengan konflik utamanya!</p>
-                    <a href="#" class="btn-read">BACA SEKARANG</a>
-                </div>
-            </article>
+                <h2>Kilau dan Debu S1</h2>
+            </a>
 
-            <!-- Kartu Cerita 2 -->
-            <article class="story-card">
-                <div class="story-cover">
-                    <img src="https://img.wattpad.com/cover/401249977-256-k463182.jpg" alt="Sampul Cerita 2">
+            <!-- Kartu 2 -->
+            <a href="#" class="story-card">
+                <div class="card-frame">
+                    <img src="https://img.wattpad.com/cover/401249977-256-k463182.jpg" alt="Kilau dan Debu S2">
                 </div>
-                <div class="story-info">
-                    <span class="badge">MYSTERY</span>
-                    <h2>Kilau dan Debu S2</h2>
-                    <p>Penjelasan singkat mengenai misteri dan teka-teki yang akan dihadapi oleh para tokoh di dalam cerita ini.</p>
-                    <a href="#" class="btn-read">BACA SEKARANG</a>
-                </div>
-            </article>
+                <h2>Kilau dan Debu S2</h2>
+            </a>
 
-            <!-- Kartu Cerita 3 -->
-            <article class="story-card">
-                <div class="story-cover">
-                    <img src="https://img.wattpad.com/cover/413327092-256-k207704.jpg" alt="Sampul Cerita 2">
+            <!-- Kartu 3 -->
+            <a href="#" class="story-card">
+                <div class="card-frame">
+                    <img src="https://img.wattpad.com/cover/413327092-256-k207704.jpg" alt="Rema dan Hening">
                 </div>
-                <div class="story-info">
-                    <span class="badge">MYSTERY</span>
-                    <h2>Rema dan Hening</h2>
-                    <p>Penjelasan singkat mengenai misteri dan teka-teki yang akan dihadapi oleh para tokoh di dalam cerita ini.</p>
-                    <a href="#" class="btn-read">BACA SEKARANG</a>
-                </div>
-            </article>
+                <h2>Rema dan Hening</h2>
+            </a>
 
-            <!-- Kartu Cerita 4 -->
-            <article class="story-card">
-                <div class="story-cover">
-                    <img src="https://img.wattpad.com/cover/369024668-144-k733812.jpg" alt="Sampul Cerita 2">
+            <!-- Kartu 4 -->
+            <a href="#" class="story-card">
+                <div class="card-frame">
+                    <img src="https://img.wattpad.com/cover/369024668-144-k733812.jpg" alt="The Two Never Get Along">
                 </div>
-                <div class="story-info">
-                    <span class="badge">FAMILY</span>
-                    <h2>The Two Never Get Along</h2>
-                    <p>Penjelasan singkat mengenai adik kakak bersama teman teman mereka yang mendapatkan banyak masalah dari berbagai halaman</p>
-                    <a href="#" class="btn-read">BACA SEKARANG</a>
-                </div>
-            </article>
+                <h2>The Two Never Get Along</h2>
+            </a>
+
         </section>
     </main>
 
-    <!-- ================= JAVASCRIPT UNTUK INTERAKSI MENU ================= -->
+    <!-- ================= JAVASCRIPT ================= -->
     <script>
         const openMenuBtn = document.getElementById('open-menu');
         const closeMenuBtn = document.getElementById('close-menu');
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
 
-        // Fungsi untuk membuka menu sidebar
         function openSidebar() {
             sidebar.classList.add('active');
             overlay.classList.add('active');
         }
 
-        // Fungsi untuk menutup menu sidebar
         function closeSidebar() {
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
         }
 
-        // Event listener saat tombol diklik
-        openMenuBtn.addEventListener('click', openSidebar);
-        closeMenuBtn.addEventListener('click', closeSidebar);
-        overlay.addEventListener('click', closeSidebar);
+        if(openMenuBtn) openMenuBtn.addEventListener('click', openSidebar);
+        if(closeMenuBtn) closeMenuBtn.addEventListener('click', closeSidebar);
+        if(overlay) overlay.addEventListener('click', closeSidebar);
     </script>
 </body>
 </html>
