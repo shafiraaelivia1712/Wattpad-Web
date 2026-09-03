@@ -17,7 +17,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7; /* Background putih bersih ala JKT48 */
+            background-color: #f7f7f7; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #111;
         }
@@ -25,11 +25,11 @@
         /* HEADER HALAMAN KARAKTER */
         .character-page-header {
             text-align: center;
-            padding: 40px 20px 20px 20px;
+            padding: 30px 15px 10px 15px;
         }
 
         .subtitle-top {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: 2px;
             color: #555;
@@ -38,7 +38,7 @@
         }
 
         .main-title {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
             letter-spacing: 1px;
             color: #111;
@@ -46,13 +46,13 @@
         }
 
         .main-title span {
-            color: #ff3366; /* Warna merah khas */
+            color: #ff3366; 
         }
 
         .breadcrumb {
-            font-size: 13px;
+            font-size: 12px;
             color: #777;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         .breadcrumb span {
@@ -60,21 +60,21 @@
             font-weight: 600;
         }
 
-        /* TOMBOL KATEGORI FILTER (SEPERTI SEMUA MEMBER, TEAM, DST) */
+        /* TOMBOL KATEGORI FILTER */
         .category-filter {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin: 30px 20px;
+            gap: 8px;
+            margin: 20px 15px;
             flex-wrap: wrap;
         }
 
         .filter-btn {
             background-color: #fff;
             border: 1px solid #ddd;
-            padding: 8px 24px;
+            padding: 6px 16px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -94,46 +94,31 @@
             color: #ff3366;
         }
 
-        .filter-btn.active:hover {
-            color: white;
-        }
-
-        /* GRID KARTU KARAKTER PERSIS GAYA JKT48 */
+        /* GRID KARTU KARAKTER */
         .character-container {
             max-width: 1100px;
-            margin: 0 auto 60px auto;
-            padding: 0 20px;
+            margin: 0 auto 50px auto;
+            padding: 0 15px;
         }
 
-        /* Pengaturan default (untuk layar besar / full screen) */
         .character-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr); 
-            gap: 30px;
+            gap: 25px;
         }
 
-        /* --- TAMBAHKAN KODE DI BAWAH INI --- */
-
-        /* Aturan untuk layar sedang (seperti layar laptop kecil atau tablet) */
+        /* RESPONSIVE LAYAR (MEDIA QUERIES) */
         @media screen and (max-width: 1024px) {
             .character-grid {
-                grid-template-columns: repeat(3, 1fr); /* Menjadi 3 kolom */
-                gap: 25px; 
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px; 
             }
         }
 
-        /* Aturan jika layar dipersempit lagi (seperti saat dibagi 2 layar) */
         @media screen and (max-width: 768px) {
             .character-grid {
-                grid-template-columns: repeat(2, 1fr); /* Menjadi 2 kolom */
-                gap: 20px;
-            }
-        }
-
-        /* Aturan jika layar sangat sempit (seukuran HP vertikal) */
-        @media screen and (max-width: 480px) {
-            .character-grid {
-                grid-template-columns: repeat(1, 1fr); /* Menjadi 1 kolom */
+                grid-template-columns: repeat(2, 1fr); /* 2 Kolom pas di HP */
+                gap: 15px;
             }
         }
 
@@ -142,40 +127,38 @@
             flex-direction: column;
         }
 
-       /* BINGKAI MERAH UTAMA KARTU */
+        /* BINGKAI MERAH KARTU */
         .character-card {
             background: #ffffff;
-            border: 8px solid #ff3366; /* Mengubah ketebalan bingkai dari 3px menjadi 8px */
+            border: 6px solid #ff3366; 
             position: relative;
-            padding: 6px; /* Jarak antara bingkai luar dan foto */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 4px; 
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .character-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 25px rgba(255, 51, 102, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(255, 51, 102, 0.2);
         }
 
-        /* ORNAMEN BINTANG KECIL DI SUDUT-SUDUT BINGKAI */
+        /* ORNAMEN BINTANG KECIL */
         .corner-star {
             position: absolute;
             color: #ff3366;
-            font-size: 22px; /* Mengubah ukuran bintang dari 12px menjadi 18px */
-            font-weight: bold; /* Tambahan: Membuat bintang sedikit lebih tebal/tegas */
+            font-size: 18px; 
+            font-weight: bold; 
             line-height: 1;
             z-index: 2;
         }
 
-        /* Jika setelah diperbesar posisi bintang terasa terlalu mepet ke tepi, 
-           kamu bisa menyesuaikan angka '4px' atau '6px' di bawah ini */
-        .star-top-left { top: 4px; left: 6px; }
-        .star-bottom-right { bottom: 4px; right: 6px; }
+        .star-top-left { top: 3px; left: 4px; }
+        .star-bottom-right { bottom: 3px; right: 4px; }
 
         /* AREA FOTO PORTRAIT */
         .character-img-wrapper {
             width: 100%;
-            height: 280px;
+            height: 230px; /* Disesuaikan agar pas berbentuk portrait di HP */
             background-color: #eaeaea;
             overflow: hidden;
             position: relative;
@@ -190,11 +173,13 @@
 
         /* NAMA KARAKTER DI BAWAH KARTU */
         .character-name {
-            margin-top: 12px;
-            font-size: 15px;
+            margin-top: 8px;
+            font-size: 13px;
             font-weight: 700;
             color: #111;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
+            line-height: 1.3;
+            text-align: center; /* Membuat nama rapi di tengah bawah foto */
         }
     </style>
 </head>
