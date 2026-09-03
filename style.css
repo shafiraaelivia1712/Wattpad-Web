@@ -524,3 +524,67 @@ footer {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 51, 102, 0.3);
 }
+
+/* =========================================
+   MEDIA QUERY UNTUK MOBILE / HP (Max Width: 768px)
+========================================= */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Perkecil padding container navbar agar tidak terlalu memakan tempat */
+    .nav-container {
+        padding: 12px 15px;
+    }
+
+    /* 2. Sesuaikan ukuran logo agar pas di layar HP */
+    .logo a {
+        font-size: 18px;
+    }
+
+    /* 3. Atur ukuran tombol login dan wattpad di navbar agar lebih ringkas */
+    .btn-wattpad, .btn-login {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+
+    /* 4. Sesuaikan ukuran teks utama (Heading) pada Hero Banner agar tidak terlalu besar */
+    .hero-content h1 {
+        font-size: 30px;
+        line-height: 1.25;
+        margin-bottom: 12px;
+    }
+
+    /* 5. Sesuaikan ukuran teks sub-deskripsi di hero banner */
+    .sub-text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    /* 6. Ubah tombol di hero banner agar tersusun secara vertikal (ke bawah) jika diperlukan, atau tetap sejajar dengan ukuran lebih kecil */
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .btn-main, .btn-secondary {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+    }
+
+    /* 7. Lebar sidebar diperkecil sedikit agar tidak menutupi seluruh layar HP */
+    .sidebar {
+        width: 260px;
+    }
+
+    /* 8. Sesuaikan jarak padding section umum di HP */
+    .section-container {
+        padding: 40px 15px;
+    }
+
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+}
